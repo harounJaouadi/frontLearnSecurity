@@ -4,11 +4,20 @@
     font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
 } 
+
+.profile-image{
+    width: 200px;
+}
+
+.logo{
+    width: 250px;
+    background-size: cover;
+}
  
 .header{
     min-height: 100vh; 
     width: 100%; 
-    background-image:linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)) , url("./../src/assets/hacker.jpg");
+    background-image:linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)) , url("./../src/assets/backgroundTest.jpg");
     background-position: center; 
     background-size:cover ;
     position: relative;
@@ -374,7 +383,7 @@ h3{
 .sub-header{
     height: 50vh;
     width: 100%;
-    background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url("./assets/hacker.jpg");
+    background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url("./assets/backgroundTest.jpg");
     background-size: cover;
     background-position: center;
     text-align: center;

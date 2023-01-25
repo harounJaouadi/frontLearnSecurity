@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import MyContext from "../../../store/context";
+import home_image from '../../../assets/home_image.png'
 
 const TextBox = function () {
 
@@ -15,10 +16,11 @@ const TextBox = function () {
   
   return (
     <div className="text-box">
-      <h1>WELCOME TO OUR PLATEFORM</h1>
+      {/* <h1>WELCOME TO OUR PLATEFORM</h1> */}
+      <img className="profile-image" src={home_image}></img>
       <p>
-        HERE IS THE BEST PLACE TO LEARN<br></br>
-        AND PRACTISE AT THE SAME TIME
+      An interactive Hacking platform for academic usage<br></br>
+      for academic usage
       </p>
       <button className="hero-btn" to="/signup" onClick={showSignupHandler}>
         CREATE AN ACCOUNT AND BEGIN

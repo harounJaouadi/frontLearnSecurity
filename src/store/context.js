@@ -8,25 +8,27 @@ const MyContext = React.createContext({
   setsignupModalIsShown(status) {},
   login: () => {},
   settoken: () => {},
-  setisLoggedin :()=>{} ,
-  user : {},
-  setuser : ()=>{}
+  setisLoggedin: () => {},
+  user : {} , 
+  setuser : function(){} ,
+  rooms : [] , 
+  setrooms : function(){} ,
+
 });
 
 export const ContextProvider = (props) => {
   const [loginModalIsShown, setloginModalIsShown] = useState(false);
   const [signupModalIsShown, setsignupModalIsShown] = useState(false);
-
   const [isLoggedin, setisLoggedin] = useState(false);
   const [token, settoken] = useState("");
-  const [user, setuser] = useState({});
+  const [user ,setuser]=useState({});
+  const [rooms,setrooms]=useState([]) ;
   useEffect(() => {
     const token = localStorage.getItem("reacttoken");
     if (token) {
       setisLoggedin(true);
       settoken(token);
     }
-    
   }, [isLoggedin, token]);
   return (
     <MyContext.Provider
@@ -38,9 +40,11 @@ export const ContextProvider = (props) => {
         settoken,
         setisLoggedin,
         isLoggedin,
+        token,
         user,
         setuser,
-        token
+        rooms,
+        setrooms
       }}
     >
       {props.children}

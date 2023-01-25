@@ -44,7 +44,7 @@ const LoginModal = function () {
         alert(response.message) ;
       }else{
         localStorage.setItem("reacttoken",response.token) ; 
-        ctx.setuser(response.user);
+        ctx.setuser(response.user) ;
         ctx.setloginModalIsShown(false) ;
         ctx.setisLoggedin(true) ;
         

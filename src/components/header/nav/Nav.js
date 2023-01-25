@@ -1,5 +1,7 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import logo from "./../../../assets/myLogo.png";
+import MyContext from "../../../store/context";
+import logo from "./../../../assets/test.png";
 
 //function for closing and opening NavBar no relation with react code
 const hideNav = function () {
@@ -16,11 +18,15 @@ const showNav = function () {
 };
 //
 
+
 const Nav = function () {
+  
+  const ctx=useContext(MyContext);
+
   return (
     <div className="nav">
       <NavLink className="link" to="/">
-        <img src={logo} alt="logo"></img>
+        <img className="logo" src={logo} alt="logo"></img>
       </NavLink>
       <div className="nav-links" id="nav-links">
         <i className="fa fa-times"  onClick={hideNav}></i>
@@ -37,12 +43,12 @@ const Nav = function () {
           </li>
           <li>
             <NavLink className="link" to="/courses" alt="">
-              COURSE
+              CLASSES
             </NavLink>
           </li>
           <li>
             <NavLink className="link" to="/blog" alt="">
-              BLOG
+              PRICING
             </NavLink>
           </li>
           <li>
@@ -50,6 +56,11 @@ const Nav = function () {
               CONTACT
             </NavLink>
           </li>
+          {ctx.isLoggedin && <li>
+            <NavLink className="link" to="/profile" alt="">
+              PROFILE
+            </NavLink>
+          </li>}
         </ul>
       </div>
       <i className="fa fa-bars"  onClick={showNav}></i>
