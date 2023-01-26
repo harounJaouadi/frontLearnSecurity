@@ -24,7 +24,7 @@ const App = () => {
       <Route path="/contact" element={<ContactUs></ContactUs>}/>
       <Route path="/courses" element={<CoursePage></CoursePage>}/>
       {ctx.isLoggedin &&<Route path="/profile" element={<Profile></Profile>}></Route>}
-      <Route path="/rooms" element={<Rooms></Rooms>}/>
+      {ctx.isLoggedin &&<Route path="/rooms" element={<Rooms></Rooms>}></Route>}
       <Route path="/:roomId" element={<Tasks></Tasks>}></Route>
       <Route path="*" element={<ContactUs></ContactUs>}/>
       

@@ -38,6 +38,7 @@ const Task = function (props) {
     const data = await response.json();
     if (data.taskSolved == true) {
       console.log("solved") ;
+      settext("")
       settitle("you solved the task");
       // alert("you solved the task ");
       setModal(true);

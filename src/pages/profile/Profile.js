@@ -1,5 +1,5 @@
 import "./profile.css";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import MyContext from "../../store/context";
 import { useNavigate } from "react-router-dom";
 import profileImage from "./../../assets/profileImages/avatar.jpeg"
@@ -8,16 +8,17 @@ import ProfCard from "./profCard/ProfCard";
 import ProfCard1 from "./profCard/ProfCard1";
 import ProfCard2 from "./profCard/ProfCard2"
 const Profile = function () {
-  const [user,setuser]=("")
+  const ctx=useContext(MyContext);
+  const [user,setuser]=useState("")
   const navigate=useNavigate() ; 
-  const ctx = useContext(MyContext);
   const getUser = async function () {
+    const token=localStorage.getItem("reacttoken")
     const response = await fetch("http://localhost:5000/user", {
       method: "GET",
 
       headers: {
         "Content-type": "application/json; charset=UTF-8",
-        Authorization: `Bearer ${ctx.token}`,
+        Authorization: `Bearer ${token}`,
       },
     });
     if (response.ok) {
@@ -28,7 +29,11 @@ const Profile = function () {
     }
   };
   useEffect(() => {
-    getUser();
+    try{
+      getUser();
+    }catch(erreur){
+      console.log("erruer") ;
+    }
   }, []);
 
 
@@ -36,7 +41,7 @@ const Profile = function () {
   const disconnectHandler=function(e){
     e.preventDefault() ; 
     localStorage.removeItem("reacttoken") ;
-    ctx.setuser({}) ; 
+     
     ctx.setisLoggedin(false) ;
     ctx.settoken("") ;
     navigate("/"); 
@@ -58,21 +63,21 @@ const Profile = function () {
             <span></span>
           </div>
           
-          <h2>{ctx.user.username}</h2>
+          <h2>{user.username}</h2>
           <p>university </p>
-          <p>{ctx.user.email}</p>
+          <p>{user.email}</p>
           <button className="hero-btn red-btn" onClick={disconnectHandler}>disconnect</button>
 
 
           <ul className="about">
             <li>
-              <span>{ctx.user.scoreWeb}</span>web score
+              <span>{user.scoreWeb}</span>web score
             </li>
             <li>
-              <span>{ctx.user.scoreNetwork}</span>network score
+              <span>{user.scoreNetwork}</span>network score
             </li>
             <li>
-              <span>{ctx.user.scoreOther}</span>other score
+              <span>{user.scoreOther}</span>other score
             </li>
           </ul>
 

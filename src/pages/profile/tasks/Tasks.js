@@ -57,7 +57,7 @@ const Tasks = function () {
         settasks(res.data.tasks);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   }, [token]);
 

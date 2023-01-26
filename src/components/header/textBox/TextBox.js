@@ -22,13 +22,13 @@ const TextBox = function () {
       An interactive Hacking platform for academic usage<br></br>
       for academic usage
       </p>
-      <button className="hero-btn" to="/signup" onClick={showSignupHandler}>
+      {!ctx.isLoggedin && <button className="hero-btn" to="/signup" onClick={showSignupHandler}>
         CREATE AN ACCOUNT AND BEGIN
-      </button>
+      </button>}
       <span style={{marginBottom:"8px" ,display : "block"}}></span>
-      <button  className="hero-btn" to="/signin" onClick={showLoginHandler}>
+      {!ctx.isLoggedin && <button  className="hero-btn" to="/signin" onClick={showLoginHandler}>
         Sign in
-      </button >
+      </button >}
     </div>
   );
 };

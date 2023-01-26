@@ -61,6 +61,11 @@ const Nav = function () {
               PROFILE
             </NavLink>
           </li>}
+          {ctx.isLoggedin && <li>
+            <NavLink className="link" to="/rooms" alt="">
+              ROOMS
+            </NavLink>
+          </li>}
         </ul>
       </div>
       <i className="fa fa-bars"  onClick={showNav}></i>
